@@ -89,31 +89,38 @@
 
 
 // script.js
-const button = document.querySelector('.button');
-const resultsDiv = document.querySelector('#results');
+// ###################################################################################################
+// const button = document.querySelector('.button');
+// const resultsDiv = document.querySelector('#results');
 
-button.addEventListener('click', () => {
-    // Remove old result boxes
-    resultsDiv.innerHTML = '';
+// button.addEventListener('click', () => {
+//     // Remove old result boxes
+//     resultsDiv.innerHTML = '';
 
-    // Make API request
-    fetch('https://nci.solus.ai/get_trending_recos', {
-        method: 'POST',
-        body: JSON.stringify({ Reco_Count: 10 }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Add new result boxes
-        const products = data.Product_List;
-        for (let i = 0; i < products.length; i++) {
-            const resultBox = document.createElement('div');
-            resultBox.classList.add('result-box');
-            resultBox.textContent = products[i];
-            resultsDiv.appendChild(resultBox);
-        }
-    })
-    .catch(error => console.error(error));
-});
+//     // Make API request
+//     fetch('https://nci.solus.ai/get_trending_recos', {
+//         method: 'POST',
+//         body: JSON.stringify({ Reco_Count: 10 }),
+//         headers: {
+//             'Content-Type': 'application/json'
+//         }
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//         // Add new result boxes
+//         const products = data.Product_List;
+//         for (let i = 0; i < products.length; i++) {
+//             const resultBox = document.createElement('div');
+//             resultBox.classList.add('result-box');
+//             resultBox.textContent = products[i];
+//             resultsDiv.appendChild(resultBox);
+//         }
+//     })
+//     .catch(error => console.error(error));
+// });
+
+// #####################################################################################################
+
+
+
+

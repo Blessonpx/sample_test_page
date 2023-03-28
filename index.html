@@ -13,6 +13,43 @@
 </body>
 </html> -->
 
+<!-- #################################################################################################### -->
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>API Demo</title>
+    <style>
+        .button {
+            background-color: blue;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .result-box {
+            width: 100%;
+            height: 50px;
+            background-color: gray;
+            margin-top: 10px;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <button class="button">Get Recommendations</button>
+    <div id="results"></div>
+
+    <script src="script.js"></script>
+</body>
+</html> -->
+
+
+<!-- ########################################################################################### -->
+
+
 
 <!DOCTYPE html>
 <html>
@@ -42,6 +79,35 @@
     <button class="button">Get Recommendations</button>
     <div id="results"></div>
 
-    <script src="script.js"></script>
+    <script>
+        const button = document.querySelector('.button');
+        const resultsDiv = document.querySelector('#results');
+
+        button.addEventListener('click', () => {
+            // Remove old result boxes
+            resultsDiv.innerHTML = '';
+
+            // Make API request
+            fetch('https://nci.solus.ai/get_trending_recos', {
+                method: 'POST',
+                body: JSON.stringify({ Reco_Count: 10 }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Add new result boxes
+                const products = data.Product_List;
+                for (let i = 0; i < products.length; i++) {
+                    const resultBox = document.createElement('div');
+                    resultBox.classList.add('result-box');
+                    resultBox.textContent = products[i];
+                    resultsDiv.appendChild(resultBox);
+                }
+            })
+            .catch(error => console.error(error));
+        });
+    </script>
 </body>
 </html>
